@@ -1,0 +1,11 @@
+
+MOTOR
+	- Dynamixel MX 28R 사용(RS485)
+	- Ft232rl :USB2Serial
+	- SP3485  :반 이중통신(RS485)
+
+CONTROLLER
+	- Odroid XU3
+
+IMU
+	- myAHRS+
