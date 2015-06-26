@@ -1,0 +1,15 @@
+<launch>
+	<param name="robot_description" command="cat $(find test)/tf.xml" />
+	<param name="camera_name" value="bv"/>
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+	<node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" />
+	<node name="image_proc" pkg="image_proc" type="image_proc" output="screen" ns="usb_cam"/>
+
+	<node name="viso" pkg="viso2_ros" type="mono_odometer" output="screen">
+		<remap from="/image" to="/usb_cam/image_rect" />
+		<param name="camera_height" value="0.5" />
+		<param name="camera_pitch" value="0" />
+		<param name="odom_frame_id" value="/odom2" />
+	</node>	
+</launch>
